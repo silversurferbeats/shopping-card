@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const Landing = () => {
     return (
         <main id="hero">
+            <video src={videoBg} muted loop autoPlay></video>
             <div className="promo">
                 <h1>Web Connect</h1>
                 <p>«La tecnología hace posible lo que antes era imposible. El diseño hace que sea real.» — Michael Gagliano</p>
@@ -13,7 +14,6 @@ const Landing = () => {
                     <button type="button">start</button>
                 </Link>
             </div>
-            <video src={videoBg} muted loop autoPlay></video>
             <div className="capa"></div>
         </main>
     )
