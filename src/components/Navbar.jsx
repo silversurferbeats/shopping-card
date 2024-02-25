@@ -9,59 +9,19 @@ const Navbar = () => {
   let [open, setOpen] = useState(false);
 
   let Links = [
-    { name: "INICIO", link: "/" },
-    { name: "HOME", link: "/home" },
-    { name: "ABOUT", link: "/" },
-    { name: "CONTACT", link: "/" },
+    { name: "HOME", link: "/" },
+    { name: "SHOPPING", link: "/home" },
+    // { name: "ABOUT", link: "/" },
+    // { name: "CONTACT", link: "/" },
   ];
 
   return (
-    // <nav className="flex justify-between items-center h-20 max-w-6xl mx-auto">
-
-    //   <NavLink to="/">
-    //     <div className='ml-5'>
-    //       <img className='w-1/3' src="../logo.png" />
-    //     </div>
-    //   </NavLink>
-
-    //   <div className='flex items-center font-medium text-slate-100 mr-5 space-x-6'>
-    //     <NavLink to="/" >
-    //       <p>Home</p>
-    //     </NavLink>
-
-    //     <NavLink to="/home">
-    //       <p>Shopping</p>
-    //     </NavLink>
-
-
-    //     <NavLink to="/cart">
-    //       <div className='relative'>
-    //         <FaShoppingCart className='text-2xl'/>
-    //         {
-    //           cart.length > 0 &&
-    //           <span className='absolute -top-1 -right-2 bg-sky-600 text-xs w-5 h-5 
-    //           flex justify-center items-center animate-bounce rounded-full'>{cart.length}</span>
-    //         }
-    //       </div>
-    //     </NavLink>
-    //   </div>
-
-    // </nav>
-
-    // ****** new navbar *********
-
     <div className='shadow-md w-full fixed top-0 left-0'>
       <div className='md:flex items-center justify-between bg-slate-300 py-4 md:px-10 px-7'>
-        {/* logo section */}
         <div className='font-bold text-2xl cursor-pointer flex items-center gap-1'>
-          {/* <BookOpenIcon className='w-7 h-7 text-blue-600'/> */}
-          {/* <span>Inscribe</span> */}
           <NavLink to="/">
-            <div className='ml-5 w-10 h-10'>
-              <img className=' ' src="../logo.png" />
-            </div>
+            <img className='w-10' src="../logo.png" />
           </NavLink>
-
         </div>
         {/* Menu icon */}
         <div onClick={() => setOpen(!open)} className='absolute right-8 top-6 cursor-pointer md:hidden w-7 h-7'>
@@ -94,7 +54,6 @@ const Navbar = () => {
 
           <button className='btn bg-blue-600 text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static'>Login</button>
         </ul>
-        {/* button */}
       </div>
     </div>
   )
