@@ -47,13 +47,13 @@ body {
    z-index: 1;
    margin-top: 72px;
 }
-
+/* 
 .Landing-wrapper h1 {
    font-size: 3.5rem;
    text-align: center;
    color: white;
    font-weight: 700;
-}
+} */
 
 .Landing-wrapper p {
    font-kerning: 2.5rem;
