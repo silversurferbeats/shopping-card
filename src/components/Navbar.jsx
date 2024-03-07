@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import { FaShoppingCart } from "react-icons/fa"
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
+import Profile from './Profile'
 // import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid'
 
+
 const Navbar = () => {
+  const {loginWithRedirect, logout, isAuthenticated} = useAuth0();
   const { cart } = useSelector((state) => state);
   let [open, setOpen] = useState(false);
 
@@ -54,7 +58,12 @@ const Navbar = () => {
               }
             </div>
           </NavLink>
-          <button className='btn bg-blue-600 text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static'>Login</button>
+          {
+            isAuthenticated ?
+            <button className='btn bg-blue-600 text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static' onClick={() => logout()} >Logout</button> :
+            <button className='btn bg-blue-600 text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static' onClick={() => loginWithRedirect()} >Login</button>
+          }
+          <Profile />
         </ul>
       </div>
     </div>
