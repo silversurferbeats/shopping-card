@@ -27,9 +27,9 @@ const Home = () => {
 
   return (
     <div>
-      <div className='circlePosition w-[590px] h-[400px] bg-slate-400 rounded-[100%] absolute top-[50%] left-[50%] transalte-x-[-50%] blur-[90px] -z-10'></div>
-      <div className='circlePosition w-[490px] h-[300px] bg-slate-400 rounded-[100%] absolute top-[200%] left-[10%] transalte-x-[-80%] blur-[90px] -z-10'></div>
-      <div className='circlePosition w-[490px] h-[300px] bg-slate-400 rounded-[100%] absolute top-[300%] left-[30%] transalte-x-[-80%] blur-[90px] -z-10'></div>
+      <div className='circlePosition w-[590px] h-[400px] bg-slate-400 rounded-[100%] absolute top-[50%] left-[50%] transalte-x-[-50%] blur-[90px]'></div>
+      <div className='circlePosition w-[490px] h-[300px] bg-slate-400 rounded-[100%] absolute top-[200%] left-[10%] transalte-x-[-80%] blur-[90px]'></div>
+      <div className='circlePosition w-[490px] h-[300px] bg-slate-400 rounded-[100%] absolute top-[300%] left-[30%] transalte-x-[-80%] blur-[90px]'></div>
       {
         loading ? <Spinner /> :
           posts.length > 0 ?
