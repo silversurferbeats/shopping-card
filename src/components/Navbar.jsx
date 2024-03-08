@@ -12,10 +12,14 @@ const Navbar = () => {
 
   let Links = [
     { name: "INICIO", link: "/" },
-    { name: "SHOPPING", link: "/home" },
+    // { name: "SHOPPING", link: "/home" },
     // { name: "ABOUT", link: "/" },
     // { name: "CONTACT", link: "/" },
   ];
+
+  if (isAuthenticated) {
+    Links.splice(1, 0, { name: "SHOPPING", link: "/home" });
+  }
 
   return (
     <div className='shadow-md w-full fixed top-0 left-0 z-10'>
@@ -45,16 +49,21 @@ const Navbar = () => {
                 </NavLink>
               </li>))
           }
-          <NavLink to="/cart">
-            <div className='relative'>
-              <FaShoppingCart className='text-2xl hover:text-blue-400 duration-500' />
-              {
-                cart.length > 0 &&
-                <span className='absolute -top-1 -right-2 bg-sky-600 text-xs w-5 h-5 
+          {
+            isAuthenticated && (
+              <NavLink to="/cart">
+                <div className='relative'>
+                  <FaShoppingCart className='text-2xl hover:text-blue-400 duration-500' />
+                  {
+                    cart.length > 0 &&
+                    <span className='absolute -top-1 -right-2 bg-sky-600 text-xs w-5 h-5 
                flex justify-center items-center animate-bounce rounded-full'>{cart.length}</span>
-              }
-            </div>
-          </NavLink>
+                  }
+                </div>
+              </NavLink>
+
+            )
+          }
           {
             isAuthenticated ?
               <button className='btn bg-blue-600 text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static' onClick={() => logout()} >Logout</button> :
