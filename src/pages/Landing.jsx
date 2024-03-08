@@ -1,5 +1,5 @@
 import React from "react";
-import videoBg from './backgroundNature.mp4';
+import videoBg from './VideoCity.mp4';
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import toast from 'react-hot-toast';
@@ -16,7 +16,7 @@ const Landing = () => {
         <main className="Landing-container">
             <video src={videoBg} muted loop autoPlay></video>
             <div className="Landing-wrapper">
-                <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+                <h1 className="mb-4 text-6xl font-extrabold text-slate-300 dark:text-white md:text-5xl lg:text-8xl">
                     <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Easy</span>
                     Shop
                 </h1>
