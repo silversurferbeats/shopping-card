@@ -30,7 +30,22 @@ const Navbar = () => {
           </NavLink>
         </div>
         {/* Menu icon */}
-        <div onClick={() => setOpen(!open)} className='absolute right-8 top-6 cursor-pointer md:hidden w-7 h-7'>
+        <div onClick={() => setOpen(!open)} className='absolute top-6 right-8 flex gap-4 cursor-pointer md:hidden'>
+          {
+            isAuthenticated && (
+              <NavLink to="/cart">
+                <div className='relative'>
+                  <FaShoppingCart className='text-2xl hover:text-blue-400 duration-500' />
+                  {
+                    cart.length > 0 &&
+                    <span className='absolute -top-1 -right-2 bg-sky-600 text-xs w-5 h-5 
+               flex justify-center items-center animate-bounce rounded-full'>{cart.length}</span>
+                  }
+                </div>
+              </NavLink>
+
+            )
+          }
           {
             open ?
               <FaAngleUp /> :
@@ -49,27 +64,32 @@ const Navbar = () => {
                 </NavLink>
               </li>))
           }
-          {
-            isAuthenticated && (
-              <NavLink to="/cart">
-                <div className='relative'>
-                  <FaShoppingCart className='text-2xl hover:text-blue-400 duration-500' />
-                  {
-                    cart.length > 0 &&
-                    <span className='absolute -top-1 -right-2 bg-sky-600 text-xs w-5 h-5 
-               flex justify-center items-center animate-bounce rounded-full'>{cart.length}</span>
-                  }
-                </div>
-              </NavLink>
-
-            )
-          }
+          {/* Divider */}
+          {/* <hr className="my-12 h-0.5 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400" /> */}
+          <Profile />
           {
             isAuthenticated ?
-              <button className='btn bg-blue-600 text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static' onClick={() => logout()} >Logout</button> :
-              <button className='btn bg-blue-600 text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static' onClick={() => loginWithRedirect()} >Login</button>
+              <button className='btn bg-blue-600 text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static mr-4' onClick={() => logout()} >Logout</button> :
+              <button className='btn bg-blue-600 text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static mr-4' onClick={() => loginWithRedirect()} >Login</button>
           }
-          <Profile />
+          <div className="invisible md:visible">
+            {
+              isAuthenticated && (
+                <NavLink to="/cart">
+                  <div className='relative mr-4'>
+                    <FaShoppingCart className='text-2xl hover:text-blue-400 duration-500' />
+                    {
+                      cart.length > 0 &&
+                      <span className='absolute -top-1 -right-2 bg-sky-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce rounded-full'>
+                        {cart.length}
+                      </span>
+                    }
+                  </div>
+                </NavLink>
+
+              )
+            }
+          </div>
         </ul>
       </div>
     </div>

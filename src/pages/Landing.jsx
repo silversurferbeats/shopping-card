@@ -16,7 +16,10 @@ const Landing = () => {
         <main className="Landing-container">
             <video src={videoBg} muted loop autoPlay></video>
             <div className="Landing-wrapper">
-                <h1 className="sm:text-center font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-orange-50 to-orange-700">EaseShop</h1>
+                <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Easy</span>
+                    Shop
+                </h1>
                 <p>«Tu destino de compras sin esfuerzo.»</p>
                 { isAuthenticated ? (
                     <Link to="/home">
