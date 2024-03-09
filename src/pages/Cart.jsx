@@ -2,10 +2,42 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import CartItem from "../components/CartItem"
+import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
+import axios from 'axios';
+
+
+
 
 const Cart = () => {
     const { cart } = useSelector((state) => state);
+    console.log('cart -->', cart)
     const [totalAmount, setTotalAmount] = useState(0);
+    const [preferenceId, setPreferenceId] = useState(null);
+
+    initMercadoPago('TEST-d502fd26-7637-45fa-87aa-26f72c9f791b', {
+        locale: 'es-AR',
+    });
+
+    const createPreference = async () => {
+        try {
+            const response = await axios.post("http://localhost:3001/create_preference", {
+                title: cart[0].title,
+                quantity: 1,
+                price: totalAmount.toFixed(2),
+            })
+            const { id } = response.data;
+            return id;
+        } catch (e) {
+            console.log(e)
+        };
+    };
+
+    const handleBuy = async () => {
+        const id = await createPreference();
+        if (id) {
+            setPreferenceId(id)
+        }
+    };
 
     useEffect(() => {
         setTotalAmount(cart.reduce((acc, curr) => acc + curr.price, 0));
@@ -18,17 +50,12 @@ const Cart = () => {
                     (
                         <div className='flex flex-col lg:flex-row'>
                             <div>
-                                <div className=''>
-                                    {
-                                        cart.map((item, index) => {
-                                            return <CartItem key={item.id} item={item} itemindex={index} />
-                                        })
-                                    }
-                                </div>
+                                {
+                                    cart.map((item, index) => {
+                                        return <CartItem key={item.id} item={item} itemindex={index} />
+                                    })
+                                }
                             </div>
-
-
-                            {/* 74,135,206 */}
                             <div className='p-10  flex flex-col justify-between h-[30rem] lg:w-[30rem] gap-3 
                                     shadow-[5px_5px_rgba(74,135,_206,_0.4),_10px_10px_rgba(74,135,_206,_0.3),_15px_15px_rgba(74,135,_206,_0.2),_20px_20px_rgba(74,135,_206,_0.1),_25px_25px_rgba(74,135,_206,_0.05)]
                                     lg:fixed lg:right-[4rem] top-[10rem] sm:w-full  '>
@@ -43,10 +70,15 @@ const Cart = () => {
                                 <div>
                                     <p className='text-gray-700 font-semibold'>Total Amount :
                                         <span className='text-black font-bold'>${totalAmount.toFixed(2)}</span>  </p>
-                                    <button className='w-full border border-zinc-200 bg-sky-600 text-white 
-                            p-5 rounded-md hover:bg-sky-600 transition duration-700 hover:text-white text-xl mt-2 cart'>
+                                    <button
+                                        className='w-full border border-zinc-200 bg-sky-600 text-white 
+                                p-5 rounded-md hover:bg-sky-600 transition duration-700 hover:text-white text-xl mt-2 cart'
+                                        onClick={handleBuy}
+                                    >
                                         Checkout Now
                                     </button>
+                                    {preferenceId && <Wallet initialization={{ preferenceId: preferenceId }} />}
+
                                 </div>
                             </div>
                         </div>
