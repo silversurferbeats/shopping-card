@@ -10,11 +10,10 @@ import axios from 'axios';
 
 const Cart = () => {
     const { cart } = useSelector((state) => state);
-    console.log('cart -->', cart)
     const [totalAmount, setTotalAmount] = useState(0);
     const [preferenceId, setPreferenceId] = useState(null);
 
-    initMercadoPago('TEST-d502fd26-7637-45fa-87aa-26f72c9f791b', {
+    initMercadoPago(process.env.MERCADOPAGO_PUBLIC_KEY, {
         locale: 'es-AR',
     });
 

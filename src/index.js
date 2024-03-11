@@ -14,7 +14,11 @@ root.render(
 
   <BrowserRouter>
     <Provider store={store}>
-      <Auth0Provider domain="gabrielsuarez.us.auth0.com" clientId="Oun2SbTo9HuHf5tymPIhAMiBuCEg9dhW" redirectUri={window.location.origin}>
+      <Auth0Provider 
+        domain={process.env.AUTH0_DOMAIN} 
+        clientId={process.env.AUTH0_CLIENT_ID} 
+        redirectUri={window.location.origin}
+      >
         <App />
       </Auth0Provider>
       <Toaster />
