@@ -7,13 +7,9 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom"
 import { Toaster } from "react-hot-toast";
 import { Auth0Provider } from "@auth0/auth0-react";
-// require('dotenv').config();
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-console.log('variable -->',process.env.REACT_APP_AUTH0_CLIENT_ID)
 root.render(
-
   <BrowserRouter>
     <Provider store={store}>
       <Auth0Provider 
@@ -26,5 +22,4 @@ root.render(
       <Toaster />
     </Provider>
   </BrowserRouter>
-
 );
