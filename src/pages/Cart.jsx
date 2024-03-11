@@ -13,7 +13,7 @@ const Cart = () => {
     const [totalAmount, setTotalAmount] = useState(0);
     const [preferenceId, setPreferenceId] = useState(null);
 
-    initMercadoPago(process.env.MERCADOPAGO_PUBLIC_KEY, {
+    initMercadoPago(process.env.REACT_APP_MERCADOPAGO_PUBLIC_KEY, {
         locale: 'es-AR',
     });
 
