@@ -19,7 +19,7 @@ const Cart = () => {
 
     const createPreference = async () => {
         try {
-            const response = await axios.post("http://localhost:3001/create_preference", {
+            const response = await axios.post("https://shopping-server-rho.vercel.app/create_preference", {
                 title: cart[0].title,
                 quantity: 1,
                 price: totalAmount.toFixed(2),
